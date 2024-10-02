@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(240, 240, 240);
+    background-image: url('construction.png.png'); /* Dummy PNG image link */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Profile container for top-right (Shamshul Ansari) */
+
+
+/* Welcome container styling */
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    text-align: center;
+    padding: 0 20px; /* Padding to avoid text touching the edges */
+}
+
+/* Heading styling */
+h1 {
+    font-size: 4em; /* Slightly smaller heading font size */
+    margin-bottom: 10px; /* Space below the heading */
+    color: #050505; /* Darker text color for better readability */
+}
+
+/* Paragraph styling */
+p {
+    font-size: 2em; /* Adjusted font size for better readability */
+    margin-top: 0; /* No margin on top */
+    margin-bottom: 20px; /* Reduced bottom margin */
+    color: #000000; /* Slightly lighter text color */
+}
+
+/* Button styling */
+.btn {
+    font-size: 1.2em; /* Slightly larger button text */
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #0056b3; /* Button background color */
+    color: #fff; /* Button text color */
+    border-radius: 5px; /* Rounded corners for the button */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.btn:hover {
+    background-color: #004494; /* Darker background color on hover */
+}

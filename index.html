@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muskan Construction</title>
+    <link rel="stylesheet" href="colour.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            flex: 1;
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .rate-section, .payment-section {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border: none;
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .payment-section, .total-section {
+            display: none;
+        }
+
+        .visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Muskan Construction</h1>
+    </header>
+
+    <div class="container">
+        <div class="rate-section">
+            <h2>Construction Rate</h2>
+            <p>Current Rate: ₹<span id="rateDisplay">25</span> per square foot</p>
+            <label for="rateInput">Update Rate (₹ per square foot):</label>
+            <input type="number" id="rateInput" placeholder="Enter new rate">
+            <button class="btn" onclick="updateRate()">Update Rate</button>
+        </div>
+
+        <div class="rate-section">
+            <h2>Customer Payment</h2>
+            <label for="squareFeet">Total Square Feet:</label>
+            <input type="number" id="squareFeet" placeholder="Enter total square feet">
+            
+            <button class="btn" onclick="calculateTotal()">Calculate Total</button>
+        </div>
+
+        <div class="total-section">
+            <h2>Total Amount</h2>
+            <p id="totalAmountDisplay"></p>
+            
+            <label for="advancePayment">Advance Payment (₹):</label>
+            <input type="number" id="advancePayment" placeholder="Enter advance payment">
+            
+            <button class="btn" onclick="calculateBalance()">Calculate Balance</button>
+            
+            <p id="balanceDisplay"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Muskan Construction</p>
+    </footer>
+
+    <script>
+        function updateRate() {
+            const newRate = document.getElementById('rateInput').value;
+            if (newRate) {
+                document.getElementById('rateDisplay').innerText = newRate;
+            } else {
+                alert('Please enter a valid rate');
+            }
+        }
+
+        function calculateTotal() {
+            const rate = parseFloat(document.getElementById('rateDisplay').innerText);
+            const squareFeet = parseFloat(document.getElementById('squareFeet').value);
+
+            if (!isNaN(squareFeet)) {
+                const totalAmount = rate * squareFeet;
+                
+                document.getElementById('totalAmountDisplay').innerText = `Total Amount: ₹${totalAmount.toFixed(2)}`;
+                
+                document.querySelector('.total-section').classList.add('visible');
+            } else {
+                alert('Please enter valid numbers for square feet.');
+            }
+        }
+
+        function calculateBalance() {
+            const totalAmount = parseFloat(document.getElementById('totalAmountDisplay').innerText.replace('Total Amount: ₹', ''));
+            const advancePayment = parseFloat(document.getElementById('advancePayment').value);
+
+            if (!isNaN(advancePayment)) {
+                const balance = totalAmount - advancePayment;
+                
+                document.getElementById('balanceDisplay').innerText = `Balance Due: ₹${balance.toFixed(2)}`;
+            } else {
+                alert('Please enter a valid advance payment amount.');
+            }
+        }
+    </script>
+
+</body>
+</html>

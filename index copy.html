@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muskan Construction</title>
+    <link rel="stylesheet" href="colour.css">
+</head>
+<body>
+
+    <header>
+        <h1>Muskan Construction</h1>
+    </header>
+
+    <div class="container">
+        <div class="rate-section">
+            <h2>Construction Rate</h2>
+            <p>Current Rate: ₹<span id="rateDisplay">25</span> per square foot</p>
+            <label for="rateInput">Update Rate (₹ per square foot):</label>
+            <input type="number" id="rateInput" placeholder="Enter new rate">
+            <button class="btn" onclick="updateRate()">Update Rate</button>
+        </div>
+
+        <div class="payment-section">
+            <h2>Customer Payment</h2>
+            <label for="customerName">Customer Name:</label>
+            <input type="text" id="customerName" placeholder="Enter customer name">
+            
+            <label for="squareFeet">Total Square Feet:</label>
+            <input type="number" id="squareFeet" placeholder="Enter total square feet">
+            
+            <label for="amountPaid">Amount Paid (₹):</label>
+            <input type="number" id="amountPaid" placeholder="Enter amount paid">
+            
+            <button class="btn" onclick="calculateBalance()">Calculate Balance</button>
+            
+            <p id="balanceDisplay"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Muskan Construction</p>
+    </footer>
+
+    <script>
+        function updateRate() {
+            const newRate = document.getElementById('rateInput').value;
+            if (newRate) {
+                document.getElementById('rateDisplay').innerText = newRate;
+            } else {
+                alert('Please enter a valid rate');
+            }
+        }
+
+        function calculateBalance() {
+            const rate = parseFloat(document.getElementById('rateDisplay').innerText);
+            const squareFeet = parseFloat(document.getElementById('squareFeet').value);
+            const amountPaid = parseFloat(document.getElementById('amountPaid').value);
+
+            if (!isNaN(squareFeet) && !isNaN(amountPaid)) {
+                const totalCost = rate * squareFeet;
+                const balance = totalCost - amountPaid;
+                document.getElementById('balanceDisplay').innerText = 
+                    `Total Cost: ₹${totalCost}, Balance Due: ₹${balance}`;
+            } else {
+                alert('Please enter valid numbers for square feet and amount paid.');
+            }
+        }
+    </script>
+
+</body>
+</html>
